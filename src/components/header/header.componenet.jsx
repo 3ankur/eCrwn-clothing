@@ -4,7 +4,8 @@ import { ReactComponent as Logo } from "../../images/crown.svg.svg";
 import {Link} from "react-router-dom";
 import  {auth} from "../../firebase/firebase.utils"
 import {connect} from "react-redux";
-
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropDown from "../cart-dropdown/cart-dropdown.component";
 const Header = ({currentUser})=>(
 <div className="header">
 <Link className="logo-container" to="/">
@@ -22,8 +23,9 @@ CONTACT
   currentUser ? <div className="option" onClick={()=>auth.signOut()}>SignOut</div> :
    <Link className="option" to="/signin" ><span>SignIn</span></Link>
 }
+<CartIcon/>
 </div>
-
+<CartDropDown />
 </div>
 );
 
