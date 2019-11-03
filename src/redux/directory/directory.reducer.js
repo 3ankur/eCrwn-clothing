@@ -9,7 +9,7 @@ const initialValue = {
           title: 'hats',
           imageUrl: hats,
           id: 1,
-          linkUrl: 'hat'//shop/hats
+          linkUrl: 'shop/hats'//
         },
         {
           title: 'jackets',
