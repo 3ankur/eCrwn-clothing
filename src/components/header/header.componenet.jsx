@@ -12,30 +12,32 @@ import {selectCartHidden} from "../../redux/cart/cart.selectors";
 
 import {createStructuredSelector} from "reselect";
 
-const Header = ({currentUser,hidden})=>(
-<div className="header">
-<Link className="logo-container" to="/">
-  <Logo className="logo"/>
-</Link>
+import {HeaderContainer,OptionLink,OptionContainerDiv,OptionsContainer,LogoContainer} from "./header.styles";
 
-<div className="options">
-<Link className="option" to="/shop">
+const Header = ({currentUser,hidden})=>(
+<HeaderContainer>
+<LogoContainer to="/">
+  <Logo className="logo"/>
+</LogoContainer>
+
+<OptionsContainer>
+<OptionLink to="/shop">
 SHOP
-</Link>
-<Link className="option" to="/shop">
+</OptionLink>
+<OptionLink to="/shop">
 CONTACT 
-</Link>
+</OptionLink>
 {
-  currentUser ? <div className="option" onClick={()=>auth.signOut()}>SignOut</div> :
-   <Link className="option" to="/signin" ><span>SignIn</span></Link>
+  currentUser ? <OptionContainerDiv onClick={()=>auth.signOut()}>SignOut</OptionContainerDiv> :
+   <OptionLink to="/signin" ><span>SignIn</span></OptionLink>
 }
 <CartIcon/>
-</div>
+</OptionsContainer>
 {
   hidden ? null : <CartDropDown />
 }
 
-</div>
+</HeaderContainer>
 );
 
 // we  can also do like that 
