@@ -7,10 +7,11 @@ import {createStructuredSelector} from "reselect";
 import {selectCollectionPreview} from "../../redux/shop/shop.selectors";
 
 const CollectionOverView = ({collections})=>{
+    console.log(collections,"main props");
     return(
         <div className="collections-overview">
             { 
-        collections.map((collection)=>(
+        collections.map((collection)=>  (
          <PreviewCollection key={collection.id} title={collection.title} items={collection.items}  />
         ))
      }

@@ -1,9 +1,10 @@
 import  React from "react";
 import "./preview-collection.styles.scss";
 import CollectionItem from "../collection-item/collection-item.componenet";
-const PreviewCollection = ({title,items})=>(
-
-    <div className="collection-preview">
+const PreviewCollection = ({title,items,id})=>(
+   
+   
+    <div className="collection-preview" key={`${id}_${title}`}>
         <h1 className="title">{title.toUpperCase() || "N/A"}</h1>
         <div className="preview">
             {

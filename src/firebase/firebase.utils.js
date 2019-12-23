@@ -51,6 +51,39 @@ const  firebaseConfig = {
 
    }
 
+   export const addCoolectionAndDocument = async (collectionKey,collectionItesms) =>{
+        const collectionRef = firestore.collection(collectionKey);
+         const batch = firestore.batch();
+         collectionItesms.forEach((obj)=>{
+             const newDocRef = collectionRef.doc();
+             batch.set(newDocRef,obj);
+         })
+        return await  batch.commit();
+
+    }
+
+    export const convertCollectionSnapshotToMap = (collections)=>{
+            const transformedCollection = collections.docs.map((doc)=>{
+                const {title,items} = doc.data();
+
+                return {
+                        routeName: encodeURI( title.toLowerCase()),
+                        id:doc.id,
+                        title,
+                        items
+                }
+            })
+
+        
+           return transformedCollection.reduce((acc,coll)=>{
+                acc[coll.title.toLowerCase()] = coll;
+             return acc;
+            },{})
+ 
+           // return transformedCollection;
+    }
+
+    
    export default firebase;
 
 
